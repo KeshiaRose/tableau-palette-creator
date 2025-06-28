@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tableau Palette Creator</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://sliceofkeesh.com/images/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body onload="initializeCanvas()">
+    <div class="container">
+      <div class="left">
+        <p class="header">Tableau Palette Creator</p>
+        <p class="title">How to Use</p>
+        <ol>
+          <li>
+            Set your palette name and
+            <a href="https://github.com/KeshiaRose/tableau-palette-creator" target="_blank">type</a
+            >.
+          </li>
+          <li>
+            Add an image that you would like to pick colors from. (Drag and drop, paste, or from
+            file explorer)
+          </li>
+          <li>Click on the colors in the image you want to add to your color palette.</li>
+          <li>Rearrange the picked colors if necessary.</li>
+          <li>Click "Copy to Clipboard".</li>
+          <li>
+            Paste in your
+            <a
+              href="https://help.tableau.com/current/pro/desktop/en-us/formatting_create_custom_colors.htm"
+              target="_blank"
+              >preferences</a
+            >
+            and use!
+          </li>
+        </ol>
+        <br />
+        <p class="inputLabel">Palette Name</p>
+        <input
+          type="text"
+          id="paletteName"
+          class="textInput"
+          placeholder="My Palette"
+          value="My Palette"
+        /><br />
+        <br />
+        <p class="inputLabel">Palette Type</p>
+        <select id="paletteType" class="textInput">
+          <option
+            value="regular"
+            data-toggle="tooltip"
+            data-placement="left"
+            title="A regular palette contains several distinct colors that can be assigned to discrete dimension members. "
+          >
+            regular
+          </option>
+          <option
+            value="ordered-sequential"
+            data-toggle="tooltip"
+            data-placement="left"
+            title="An ordered-sequential palette shows a single color, varying in intensity and is commonly used for continuous fields."
+          >
+            ordered-sequential
+          </option>
+          <option
+            value="ordered-diverging"
+            data-toggle="tooltip"
+            data-placement="left"
+            title="A diverging palette shows two ranges of values using color intensity to show the magnitude of the number and the actual color to show which range the number is from."
+          >
+            ordered-diverging
+          </option>
+        </select>
+        <div class="inputRow">
+          <button class="addImage" onclick="openModal('imageModal')">Add an Image</button>
+        </div>
+        <div class="colorPreview" id="colorPreview">Color Preview</div>
+        <div id="colors"></div>
+        <div class="inputRow">
+          <button onclick="copyPalette()" id="copybtn" class="addImage">Copy to Clipboard</button>
+        </div>
+        <br />
+        <br />
+        <div class="inputRow">
+          <a href="https://github.com/KeshiaRose/tableau-palette-creator" target="_blank"
+            >Source code</a
+          >
+        </div>
+      </div>
+      <div class="right" id="right">
+        <canvas id="myCanvas"> Your browser does not support the HTML5 canvas tag. </canvas>
+      </div>
+    </div>
+
+    <div class="modalContainer" id="imageModal">
+      <div class="modal">
+        <div class="modalHeader">
+          <p>Add an Image</p>
+          <p class="close" onclick="closeModal('imageModal')">X</p>
+        </div>
+        <div class="modalBody">
+          <label for="imageFromFile" class="imageInput" id="dropZone">
+            <p>Drag and Drop</p>
+            or
+            <p>Click to Select</p>
+            or
+            <p>Enter a URL Below</p>
+          </label>
+          <input
+            type="file"
+            id="imageFromFile"
+            style="display: none"
+            onchange="getFileFromInput(this)"
+          />
+          <div class="inputRow">
+            <input type="text" id="imageFromURL" class="textInput" placeholder="Image URL" />
+            <button class="urlButton" onclick="getImageFromURL(this)">Go</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      src="https://sliceofkeesh-hit-counter.glitch.me/counter.png?page=palette_creator"
+      alt=""
+      style="display: none"
+      aria-hidden="true"
+    /><!-- Hit tracker -->
+  </body>
+  <script>
+    if (!!window.msCrypto)
+      document.body.innerHTML =
+        "<p style='text-align:center;padding: 20px;'>This tool requires a <a href='https://www.google.com/chrome/'>modern browser</a>.</p>";
+  </script>
+</html>
