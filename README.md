@@ -1,8 +1,10 @@
 # Tableau Palette Creator
 
-A tool that allows you to sample colors from an image to create a Tableau Color Palette. Follow these [instructions](https://help.tableau.com/current/pro/desktop/en-us/formatting_create_custom_colors.htm) to learn how to use the palettes you create. Created by [Keshia Rose](https://twitter.com/KroseKeshia)
+A tool that allows you to sample colors from an image to create a Tableau Color Palette. Follow these [instructions](https://help.tableau.com/current/pro/desktop/en-us/formatting_create_custom_colors.htm) to learn how to use the palettes you create.
 
 ## How to Use
+
+Live page: https://tableau-palette-creator.sliceofkeesh.com
 
 1. Set your palette name and type.
 1. Add an image that you would like to pick colors from. (Drag and drop, paste, or from file explorer)
